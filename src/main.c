@@ -6,6 +6,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <string.h>
+#include <unistd.h>
 
 struct networkData {
     uint32_t value1;
@@ -14,7 +15,7 @@ struct networkData {
     uint16_t value3;
 } __attribute__((packed));
 
-#define DATAMAX 100
+#define DATAMAX 1000
 
 int main(int argc, char** argv){
 
@@ -92,6 +93,8 @@ int main(int argc, char** argv){
     }else{
         printf("Timeout occured - Server isn\'t listening, the packet was dropped, or it refused to respond.\n");
     }
+
+    close(sock);
 
     return 0;
 }
