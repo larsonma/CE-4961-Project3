@@ -96,8 +96,9 @@ int main(int argc, char** argv){
     char rec_data[DATAMAX];
     memset(rec_data, 0, DATAMAX);
 
-    //If data received from the server, print it out to the user. If the request takes too
-    //long, timeout and print a message indicating that the server could not send a response.
+    //If data received from the server, print it out to the user. If the request takes
+	//too long, timeout and print a message indicating that the server could not send
+	//a response.
     if(FD_ISSET(sock, &sockedReadSet)){
         size_echoed = recvfrom(sock, rec_data, DATAMAX, 0, NULL, NULL);
 
@@ -108,7 +109,8 @@ int main(int argc, char** argv){
 
         printf("Received message: %s\n", rec_data);
     }else{
-        printf("Timeout occured - Server isn\'t listening, the packet was dropped, or it refused to respond.\n");
+        printf("Timeout occurred - Server isn\'t listening, the packet was dropped," 
+		    "or it refused to respond.\n");
     }
 
     //Close socket and release it back to the OS.
