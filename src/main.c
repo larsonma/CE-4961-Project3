@@ -1,3 +1,7 @@
+//Name: Mitchell Larson
+//Course: CE 4961
+//Assignment: Project 3
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -44,6 +48,7 @@ int main(int argc, char** argv){
 
     server.sin_family = AF_INET;
 
+    //Get host name and print + exit if there was an error.
     if((hp = gethostbyname(argv[1])) == 0){
         perror("Error getting host");
         exit(1);
@@ -69,6 +74,7 @@ int main(int argc, char** argv){
     int size_echoed;
     int size_sent = sendto(sock, &d1, sizeof(d1), 0, (struct sockaddr*) &server, sizeof(server));
 
+    //If there was an error send data, indicate to user and exit.
     if(size_sent < 0){
         perror("Error Sending data");
         exit(1);
